@@ -1,6 +1,6 @@
 {
-    "name": "householder",
-    "short_name": "householder",
+    "name": "expiry",
+    "short_name": "expiry",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

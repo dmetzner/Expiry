@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:householder/Item/AddItemActionButton.dart';
-import 'package:householder/BlackMaterialColor.dart';
-import 'package:householder/SearchAwareAppBar.dart';
+import 'package:expiry/Item/AddItemActionButton.dart';
+import 'package:expiry/BlackMaterialColor.dart';
+import 'package:expiry/SearchAwareAppBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // import 'package:flutter/rendering.dart';  // debug paint

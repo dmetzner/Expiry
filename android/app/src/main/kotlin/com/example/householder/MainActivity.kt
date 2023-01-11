@@ -1,4 +1,4 @@
-package com.example.householder
+package com.example.expiry
 
 import io.flutter.embedding.android.FlutterActivity
 
