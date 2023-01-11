@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/android/expiry_android.iml" filepath="$PROJECT_DIR$/android/expiry_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/householder.iml" filepath="$PROJECT_DIR$/householder.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/householder_android.iml" filepath="$PROJECT_DIR$/android/householder_android.iml" />
     </modules>
   </component>
 </project>
