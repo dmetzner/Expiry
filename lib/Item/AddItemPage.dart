@@ -1,6 +1,6 @@
+import 'package:expiry/Item/AddItemForm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:expiry/Item/AddItemForm.dart';
 
 class AddItemPage extends StatelessWidget {
   const AddItemPage({Key? key}) : super(key: key);
@@ -11,11 +11,9 @@ class AddItemPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.addItemAppBarTitle),
       ),
-      body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[AddItemForm()],
-          )
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: const <Widget>[AddItemForm()],
       ),
     );
   }

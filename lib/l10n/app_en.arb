@@ -14,5 +14,40 @@
       "description": "The text of the save button when adding a new item"
     },
 
-    "settings": "Settings"
+
+    "settings": "Settings",
+    "@settings": {
+      "description": "The text of the settings button"
+    },
+
+    "signIn": "Sign In",
+    "@signIn": {
+      "description": "The text of the sign in button"
+    },
+
+
+    "signInPageAppBarTitle": "Sign In",
+    "@signInPageAppBarTitle": {
+      "description": "The title of the app bar when signing in"
+    },
+
+    "signInFormSubmitButton": "Sign In",
+    "@signInFormSubmitButton": {
+      "description": "The text of the sign in button on the sign in form"
+    },
+
+    "signInEmailFieldLabelText": "Email",
+    "@signInEmailFieldLabelText": {
+      "description": "The text of the email field label on the sign in form"
+    },
+
+    "signInEmailFieldValidationErrorEmailRequired": "Email is required",
+    "@signInEmailFieldValidationErrorEmailRequired": {
+      "description": "The text of the email field validation error no email is provided"
+    },
+
+    "signInEmailFieldValidationErrorEmailInvalid": "Email is invalid",
+    "@signInEmailFieldValidationErrorEmailInvalid": {
+      "description": "The text of the email field validation error when an invalid email is provided"
+    }
 }

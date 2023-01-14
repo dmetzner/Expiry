@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "531599313108",
+    "project_id": "expiry-ce907",
+    "storage_bucket": "expiry-ce907.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531599313108:android:9222877bc84d455e9dd341",
+        "android_client_info": {
+          "package_name": "com.example.expiry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531599313108-vk30egj0nla2ntv30p86qvg6to4vuahs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiWH1ffJ6Dl8KGYVagyVR4GemKOZdRsjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531599313108-vk30egj0nla2ntv30p86qvg6to4vuahs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531599313108-bpma46rpvj2f4tmsnv4iffa3ok009cvo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.expiry"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

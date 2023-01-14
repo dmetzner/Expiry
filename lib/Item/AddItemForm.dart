@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:expiry/Item/Form/FormData.dart';
-import 'package:expiry/Item/Form/FormSubmitHandler.dart';
 import 'package:expiry/Item/Form/Field/BarCodeFormField.dart';
 import 'package:expiry/Item/Form/Field/DescriptionFormField.dart';
 import 'package:expiry/Item/Form/Field/ExpiryDateFormField.dart';
 import 'package:expiry/Item/Form/Field/ImageFormField.dart';
 import 'package:expiry/Item/Form/Field/NameFormField.dart';
+import 'package:expiry/Item/Form/FormData.dart';
 import 'package:expiry/Item/Form/FormSubmitButton.dart';
+import 'package:expiry/Item/Form/FormSubmitHandler.dart';
+import 'package:flutter/material.dart';
 
 class AddItemForm extends StatefulWidget {
   const AddItemForm({super.key});
@@ -25,7 +25,7 @@ class _AddItemFormState extends State<AddItemForm> {
     return Form(
       key: _formKey,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
         child: Column(
           children: [
             Row(
@@ -51,12 +51,9 @@ class _AddItemFormState extends State<AddItemForm> {
                     children: [
                       ExpiryDateFormField(
                           initialDate: _formData.expiryDate,
-                          onChanged: _formData.setExpiryDate
-                      ),
+                          onChanged: _formData.setExpiryDate),
                       const SizedBox(height: 20),
-                      DescriptionFormField(
-                          onChanged: _formData.setDescription
-                      ),
+                      DescriptionFormField(onChanged: _formData.setDescription),
                       const SizedBox(height: 40),
                       FormSubmitButton(
                         formKey: _formKey,

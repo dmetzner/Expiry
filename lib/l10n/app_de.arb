@@ -1,9 +1,12 @@
 {
     "appTitle": "MHD Tracker",
-
     "addItemAppBarTitle": "Artikel hinzufügen",
-
     "saveItemButton": "Speichern",
-
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "signIn": "Anmelden",
+    "signInPageAppBarTitle": "Melde dich an",
+    "signInFormSubmitButton": "Anmelden",
+    "signInEmailFieldLabelText": "Email",
+    "signInEmailFieldValidationErrorEmailRequired": "Email ist erforderlich",
+    "signInEmailFieldValidationErrorEmailInvalid": "Email ist ungültig"
 }

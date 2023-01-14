@@ -1,13 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:expiry/Item/AddItemActionButton.dart';
 import 'package:expiry/BlackMaterialColor.dart';
+import 'package:expiry/Item/AddItemActionButton.dart';
 import 'package:expiry/SearchAwareAppBar.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'Security/SignIn/SignInPage.dart';
+import 'firebase_options.dart';
 
 // import 'package:flutter/rendering.dart';  // debug paint
 
-void main() {
+void main() async {
   // debugPaintSizeEnabled = true;
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -53,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.black,
               ),
@@ -64,6 +72,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 22,
                 ),
               ),
+            ),
+            ListTile(
+              textColor: Colors.white,
+              iconColor: Colors.white,
+              leading: const Icon(Icons.person),
+              title: Text(AppLocalizations.of(context)!.signIn),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignInPage()));
+              },
             ),
             ListTile(
               textColor: Colors.white,
