@@ -2,11 +2,15 @@
     "appTitle": "MHD Tracker",
     "addItemAppBarTitle": "Artikel hinzufügen",
     "saveItemButton": "Speichern",
-    "settings": "Einstellungen",
+    "sidebarDrawer_MenuTitle_SignIn": "Anmelden",
+    "sidebarDrawer_MenuTitle_Settings": "Einstellungen",
+    "sidebarDrawer_MenuTitle_Support": "Support",
+    "sidebarDrawer_MenuTitle_SignOut": "Abmelden",
     "signIn": "Anmelden",
-    "signInPageAppBarTitle": "Melde dich an",
-    "signInFormSubmitButton": "Anmelden",
-    "signInEmailFieldLabelText": "Email",
-    "signInEmailFieldValidationErrorEmailRequired": "Email ist erforderlich",
-    "signInEmailFieldValidationErrorEmailInvalid": "Email ist ungültig"
+    "signInPage_AppBar_Title": "Melde dich an",
+    "signInForm_SubmitButton": "Anmelden",
+    "signInForm_EmailField_LabelText": "Email",
+    "signInForm_EmailField_ValidationError_EmailRequired": "Email ist erforderlich",
+    "signInForm_EmailField_ValidationError_EmailInvalid": "Email ist ungültig",
+    "signInForm_PasswordField_ValidationError_PasswordRequired": "Passwort ist erfordelich"
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'SignInForm.dart';
+import 'Form/SignInForm.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -10,19 +10,22 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.signInPageAppBarTitle),
+        title: Text(AppLocalizations.of(context)!.signInPage_AppBar_Title),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: const <Widget>[
-          Expanded(
-              child: Image(
-            image: AssetImage('lib/assets/SignIn.png'),
-            width: 300,
-            height: 300,
-          )),
-          SignInForm()
-        ],
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const <Widget>[
+            Image(
+              image: AssetImage('lib/assets/SignIn.png'),
+              width: 200,
+              height: 200,
+            ),
+            SizedBox(height: 20),
+            SignInForm()
+          ],
+        ),
       ),
     );
   }

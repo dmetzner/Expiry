@@ -1,53 +1,72 @@
 {
-    "appTitle": "Expiry Date Tracker",
-    "@appTitle": {
-      "description": "The title of the application"
-    },
-
-    "addItemAppBarTitle": "Add Item",
-    "@addItemAppBarTitle": {
-      "description": "The title of the app bar when adding a new item"
-    },
-
-    "saveItemButton": "Save",
-    "@saveItemButton": {
-      "description": "The text of the save button when adding a new item"
-    },
+  "appTitle": "Expiry Date Tracker",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "addItemAppBarTitle": "Add Item",
+  "@addItemAppBarTitle": {
+    "description": "The title of the app bar when adding a new item"
+  },
+  "saveItemButton": "Save",
+  "@saveItemButton": {
+    "description": "The text of the save button when adding a new item"
+  },
 
 
-    "settings": "Settings",
-    "@settings": {
-      "description": "The text of the settings button"
-    },
+  "sidebarDrawer_MenuTitle_SignIn": "Sign In",
+  "@sidebarDrawer_MenuTitle_SignIn": {
+      "description": "The title of the menu item to sign in"
+  },
+  "sidebarDrawer_MenuTitle_Settings": "Settings",
+  "@sidebarDrawer_MenuTitle_Settings": {
+    "description": "The text of the settings button in the sidebar drawer to open the settings page"
+  },
+  "sidebarDrawer_MenuTitle_Support": "Support",
+  "@sidebarDrawer_MenuTitle_Support": {
+    "description": "The text of the support button in the sidebar drawer to open the support page"
+  },
+  "sidebarDrawer_MenuTitle_SignOut": "Sign Out",
+  "@sidebarDrawer_MenuTitle_SignOut": {
+      "description": "The text of the sign out button in the sidebar drawer to sign out of the app"
+  },
 
-    "signIn": "Sign In",
-    "@signIn": {
-      "description": "The text of the sign in button"
-    },
 
 
-    "signInPageAppBarTitle": "Sign In",
-    "@signInPageAppBarTitle": {
-      "description": "The title of the app bar when signing in"
-    },
+  "signIn": "Sign In",
+  "@signIn": {
+    "description": "The text of the sign in button"
+  },
 
-    "signInFormSubmitButton": "Sign In",
-    "@signInFormSubmitButton": {
-      "description": "The text of the sign in button on the sign in form"
-    },
 
-    "signInEmailFieldLabelText": "Email",
-    "@signInEmailFieldLabelText": {
-      "description": "The text of the email field label on the sign in form"
-    },
+  "signInPage_AppBar_Title": "Sign In",
+  "@signInPage_AppBar_Title": {
+    "description": "The title of the app bar when signing in"
+  },
 
-    "signInEmailFieldValidationErrorEmailRequired": "Email is required",
-    "@signInEmailFieldValidationErrorEmailRequired": {
-      "description": "The text of the email field validation error no email is provided"
-    },
+  "signInForm_EmailField_LabelText": "Email",
+  "@signInForm_EmailField_LabelText": {
+    "description": "The text of the email field label on the sign in form"
+  },
+  "signInForm_EmailField_ValidationError_EmailRequired": "Email is required",
+  "@signInForm_EmailField_ValidationError_EmailRequired": {
+    "description": "The text of the email field validation error no email is provided"
+  },
+  "signInForm_EmailField_ValidationError_EmailInvalid": "Email is invalid",
+  "@signInForm_EmailField_ValidationError_EmailInvalid": {
+    "description": "The text of the email field validation error when an invalid email is provided"
+  },
 
-    "signInEmailFieldValidationErrorEmailInvalid": "Email is invalid",
-    "@signInEmailFieldValidationErrorEmailInvalid": {
-      "description": "The text of the email field validation error when an invalid email is provided"
-    }
+  "signInForm_PasswordField_LabelText": "Password",
+  "@signInForm_PasswordField_LabelText": {
+    "description": "The text of the password field label on the sign in form"
+  },
+  "signInForm_PasswordField_ValidationError_PasswordRequired": "Password is required",
+  "@signInForm_PasswordField_ValidationError_PasswordRequired": {
+    "description": "The text of the password field validation error when no password is provided"
+  },
+
+  "signInForm_SubmitButton": "Sign In",
+  "@signInForm_SubmitButton": {
+    "description": "The text of the sign in button on the sign in form"
+  }
 }

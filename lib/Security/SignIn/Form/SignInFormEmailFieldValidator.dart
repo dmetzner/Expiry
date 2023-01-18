@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SignInEmailValidator {
+class SignInFormEmailFieldValidator {
   final BuildContext _context;
-  const SignInEmailValidator({required BuildContext context}) : _context = context;
+  const SignInFormEmailFieldValidator({required BuildContext context}) : _context = context;
 
   String? validate(String? value) {
     if (value == null || value.isEmpty) {
-      return AppLocalizations.of(_context)!.signInEmailFieldValidationErrorEmailRequired;
+      return AppLocalizations.of(_context)!.signInForm_EmailField_ValidationError_EmailRequired;
     }
     if (!isEmailFormatValid(value)) {
-      return AppLocalizations.of(_context)!.signInEmailFieldValidationErrorEmailInvalid;
+      return AppLocalizations.of(_context)!.signInForm_EmailField_ValidationError_EmailInvalid;
     }
     return null;
   }

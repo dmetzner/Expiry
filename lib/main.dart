@@ -1,11 +1,11 @@
 import 'package:expiry/BlackMaterialColor.dart';
 import 'package:expiry/Item/AddItemActionButton.dart';
-import 'package:expiry/SearchAwareAppBar.dart';
+import 'package:expiry/Layout/SearchAwareAppBar.dart';
+import 'package:expiry/Layout/Sidebar/SidebarDrawer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'Security/SignIn/SignInPage.dart';
 import 'firebase_options.dart';
 
 // import 'package:flutter/rendering.dart';  // debug paint
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.black,
         ),
       ),
-      title: "AppLocalizations.of(context)!.appTitle",
+      title: "Expiry",
       home: const MyHomePage(),
     );
   }
@@ -57,43 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const SearchAwareAppBar(),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-              ),
-              child: Text(
-                'Coming soon',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                ),
-              ),
-            ),
-            ListTile(
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              leading: const Icon(Icons.person),
-              title: Text(AppLocalizations.of(context)!.signIn),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SignInPage()));
-              },
-            ),
-            ListTile(
-              textColor: Colors.white,
-              iconColor: Colors.white,
-              leading: const Icon(Icons.settings),
-              title: Text(AppLocalizations.of(context)!.settings),
-            ),
-          ],
-        ),
-      ),
+      drawer: const SidebarDrawer(),
       body: Center(
         child: ListView.builder(itemBuilder: (context, index) {
           return ListTile(
@@ -108,59 +72,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-// class SignInForm extends StatefulWidget {
-//   @override
-//   _SignInFormState createState() => _SignInFormState();
-// }
-//
-// class _SignInFormState extends State<SignInForm> {
-//   final _formKey = GlobalKey<FormState>();
-//   String? _email;
-//   String? _password;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Form(
-//       key: _formKey,
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           TextFormField(
-//             decoration: InputDecoration(labelText: 'Email'),
-//             validator: (value) {
-//               if (value.isEmpty) {
-//                 return 'Please enter a valid email';
-//               }
-//               return null;
-//             },
-//             onSaved: (value) => _email = value,
-//           ),
-//           TextFormField(
-//             decoration: InputDecoration(labelText: 'Password'),
-//             obscureText: true,
-//             validator: (value) {
-//               if (value.isEmpty) {
-//                 return 'Please enter a valid password';
-//               }
-//               return null;
-//             },
-//             onSaved: (value) => _password = value,
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.symmetric(vertical: 16.0),
-//             child: RaisedButton(
-//               onPressed: () {
-//                 if (_formKey.currentState.validate()) {
-//                   _formKey.currentState.save();
-//                   // Sign in the user with the email and password
-//                 }
-//               },
-//               child: Text('Sign In'),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
