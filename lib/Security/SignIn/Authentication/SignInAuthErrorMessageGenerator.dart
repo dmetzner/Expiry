@@ -10,8 +10,10 @@ class SignInAuthErrorMessageGenerator {
         return "Sign in failed. Please check your email and password.";
       case SignInAuthResultStatus.userDisabled:
         return "User with this email has been disabled.";
+      case SignInAuthResultStatus.tooManyRequests:
+        return "Too many requests. Try again later.";
       default:
-        return "An undefined Error happened.";
+        return "An undefined Error happened. Please try again later.";
     }
   }
 }

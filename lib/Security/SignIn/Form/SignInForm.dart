@@ -27,7 +27,7 @@ class _SignInFormState extends State<SignInForm> {
         children: <Widget>[
           SignInFormEmailField(onChanged: _formData.setEmail, errorText: _formData.emailErrorText),
           const SizedBox(height: 20),
-          SignInPasswordField(onChanged: _formData.setPassword),
+          SignInPasswordField(onChanged: _formData.setPassword, errorText: _formData.passwordErrorText),
           const SizedBox(height: 40),
           SignInFormSubmitButton(onSubmit: onSubmit)
         ],
@@ -56,6 +56,11 @@ class _SignInFormState extends State<SignInForm> {
         case SignInAuthResultStatus.userNotFound:
           setState(() {
             _formData.passwordErrorText = SignInAuthErrorMessageGenerator.generateMessageByStatusCode(status);
+          });
+          break;
+        case SignInAuthResultStatus.tooManyRequests:
+          setState(() {
+            _formData.emailErrorText = SignInAuthErrorMessageGenerator.generateMessageByStatusCode(status);
           });
           break;
         case SignInAuthResultStatus.undefined:

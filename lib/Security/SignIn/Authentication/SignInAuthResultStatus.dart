@@ -4,5 +4,6 @@ enum SignInAuthResultStatus {
   invalidEmail,
   userNotFound,
   userDisabled,
+  tooManyRequests,
   undefined,
 }
