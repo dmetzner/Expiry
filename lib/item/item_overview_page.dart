@@ -1,0 +1,160 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:expiry/item/edit_item_page.dart';
+import 'package:expiry/layout/page_loading_animation.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'overview/expiry_item_seperator.dart';
+
+class ItemOverview extends StatelessWidget {
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  ItemOverview({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: db.collection("products").get(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasError) {
+            return Center(child: Text('An error occurred: ${snapshot.error}'));
+          } else {
+            List<DocumentSnapshot> sortedDocs = snapshot.data!.docs;
+            sortedDocs.sort((a, b) {
+              Timestamp expiryA = (a.data() as Map)['expiryDate'];
+              Timestamp expiryB = (b.data() as Map)['expiryDate'];
+              return expiryA.compareTo(expiryB);
+            });
+
+            return ListView.builder(
+              itemCount: sortedDocs.length,
+              itemBuilder: (context, index) {
+                var doc = sortedDocs[index];
+                var id = doc.id;
+                Map data = (doc.data() as Map);
+
+                Timestamp currentExpiryDate = data['expiryDate'];
+                Timestamp? prevExpiryDate = index > 0 ? (sortedDocs[index - 1].data() as Map)['expiryDate'] : null;
+
+                var widgets = <Widget>[];
+
+                if (prevExpiryDate == null || getDaysUntilExpiry(currentExpiryDate) != getDaysUntilExpiry(prevExpiryDate)) {
+                  widgets.add(ExpiryItemSeparator(daysUntilExpiry: getDaysUntilExpiry(currentExpiryDate)));
+                }
+
+                widgets.add(Container(
+                  // item dividing line
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.grey[400]!,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  // item content
+                  child: InkWell(
+                    onTap: () {
+                      // Navigate to the second page with an ID
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditItemPage(id: id),
+                        ),
+                      );
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          height: 80.0,
+                          width: 80.0,
+                          decoration: BoxDecoration(
+                            border: const Border(bottom: BorderSide(color: Colors.grey, width: 1.0)),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(data["imageUrl"] ?? "https://picsum.photos/200/300"),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16.0),
+                        SizedBox(
+                          height: 80.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(formatTimestamp(data["expiryDate"]),
+                                  style: TextStyle(
+                                    color: Colors.grey[400],
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 12,
+                                  )),
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: Text(data["name"],
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 16,
+                                      )),
+                                ),
+                              ),
+                              Text(data["description"],
+                                  style: TextStyle(
+                                    color: Colors.grey[400],
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 12,
+                                  )),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        SizedBox(
+                          height: 80.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: ((data["tags"] ?? []) as List<dynamic>)
+                                .map((e) => Container(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Text(e.toString(),
+                                          style: TextStyle(
+                                            color: Colors.grey[400],
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 16,
+                                          )),
+                                    ))
+                                .toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ));
+
+                return Column(
+                  children: widgets,
+                );
+              },
+            );
+          }
+        } else {
+          return const PageLoadingAnimation();
+        }
+      },
+    );
+  }
+
+  int getDaysUntilExpiry(Timestamp expiryDate) {
+    var now = DateTime.now();
+    var expiry = expiryDate.toDate();
+    var difference = expiry.difference(now);
+    var days = difference.inDays;
+    return days < 0 ? -1 : days;
+  }
+
+  String formatTimestamp(Timestamp timestamp) {
+    return DateFormat('dd MMM yyyy').format(timestamp.toDate());
+  }
+}
