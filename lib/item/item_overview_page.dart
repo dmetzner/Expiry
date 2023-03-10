@@ -6,14 +6,22 @@ import 'package:intl/intl.dart';
 
 import 'overview/expiry_item_seperator.dart';
 
-class ItemOverview extends StatelessWidget {
-  FirebaseFirestore db = FirebaseFirestore.instance;
+class ItemOverview extends StatefulWidget {
   ItemOverview({Key? key}) : super(key: key);
 
   @override
+  State<ItemOverview> createState() => _ItemOverviewState();
+}
+
+class _ItemOverviewState extends State<ItemOverview> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  @override
   Widget build(BuildContext context) {
+    var future = db.collection('products').get();
+
     return FutureBuilder(
-      future: db.collection("products").get(),
+      future: future,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
@@ -62,7 +70,12 @@ class ItemOverview extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => EditItemPage(id: id),
                         ),
-                      );
+                      ).then((value) => {
+                            setState(() {
+                              // refresh the page
+                              future = db.collection('products').get();
+                            })
+                          });
                     },
                     child: Row(
                       children: <Widget>[
