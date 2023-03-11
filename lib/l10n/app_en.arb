@@ -7,6 +7,10 @@
   "@addItemAppBarTitle": {
     "description": "The title of the app bar when adding a new item"
   },
+  "editItemAppBarTitle": "Edit Item",
+  "@editItemAppBarTitle": {
+    "description": "The title of the app bar when editing an item"
+  },
   "saveItemButton": "Save",
   "@saveItemButton": {
     "description": "The text of the save button when adding a new item"

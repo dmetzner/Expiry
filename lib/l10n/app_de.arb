@@ -1,6 +1,7 @@
 {
     "appTitle": "MHD Tracker",
     "addItemAppBarTitle": "Artikel hinzufügen",
+    "editItemAppBarTitle": "Artikel bearbeiten",
     "saveItemButton": "Speichern",
     "sidebarDrawer_MenuTitle_SignIn": "Anmelden",
     "sidebarDrawer_MenuTitle_Settings": "Einstellungen",

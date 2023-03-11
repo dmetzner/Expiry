@@ -1,12 +1,10 @@
-import 'package:image_picker/image_picker.dart';
-
 class FormData {
   String? id;
   String barCode = '';
   String name = '';
   String description = '';
   DateTime expiryDate = DateTime.now();
-  XFile? image;
+  String image = '';
 
   void setID(String id) {
     this.id = id;
@@ -28,7 +26,7 @@ class FormData {
     expiryDate = value!;
   }
 
-  void setImage(XFile? value) {
-    image = value;
+  void setImage(String? value) {
+    image = value ?? '';
   }
 }

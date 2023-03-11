@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../layout/page_loading_animation.dart';
 import 'form/form_data.dart';
@@ -12,9 +13,7 @@ class EditItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(id),
-      ),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.editItemAppBarTitle)),
       body: Center(
         child: FutureBuilder<DocumentSnapshot>(
           // Get the data from Firebase using the ID
@@ -28,20 +27,26 @@ class EditItemPage extends StatelessWidget {
             }
 
             if (snapshot.connectionState == ConnectionState.done) {
-              Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
-              FormData formData = FormData();
-              formData.id = id;
-              formData.barCode = data['code'];
-              formData.name = data['name'];
-              formData.description = data['description'];
-              // formData.expiryDate = data['expiryDate'];
-              formData.image = data['image'];
-              return ItemForm(formData: formData);
+              return ItemForm(formData: _mapSnapShotToFormData(snapshot.data!));
             }
             return const PageLoadingAnimation();
           },
         ),
       ),
     );
+  }
+
+  FormData _mapSnapShotToFormData(DocumentSnapshot snapshot) {
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+    FormData formData = FormData();
+    formData.setID(id);
+    formData.setBarCode(data['code']);
+    formData.setName(data['name']);
+    formData.setDescription(data['description']);
+    if (data['expiryDate'] is Timestamp) {
+      formData.setExpiryDate((data['expiryDate'] as Timestamp).toDate());
+    }
+    formData.setImage(data['image']);
+    return formData;
   }
 }

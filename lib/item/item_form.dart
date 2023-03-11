@@ -33,7 +33,7 @@ class _ItemFormState extends State<ItemForm> {
           children: [
             Row(
               children: [
-                ImageFormField(onChanged: widget.formData.setImage),
+                ImageFormField(initialValue: widget.formData.image, onChanged: widget.formData.setImage),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Column(

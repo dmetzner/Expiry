@@ -1,46 +1,45 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'image/upload_icon.dart';
+
 class ImageFormField extends StatefulWidget {
-  final Function(XFile?) onChanged;
-  const ImageFormField({Key? key, required this.onChanged}) : super(key: key);
+  final Function(String?) onChanged;
+  final String? initialValue;
+  const ImageFormField({Key? key, required this.onChanged, this.initialValue}) : super(key: key);
 
   @override
   State<ImageFormField> createState() => _ImageFormFieldState();
 }
 
 class _ImageFormFieldState extends State<ImageFormField> {
-  XFile? _xFile;
+  String? imageBase64;
+  static const double _width = 100;
+  static const double _height = 100;
 
-  void _pickImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    // final XFile? photo = await picker.pickImage(source: ImageSource.camera);
-
-    widget.onChanged(image);
-    setState(() {
-      _xFile = image;
-    });
-  }
-
-  Widget getImageWidget() {
-    return _xFile != null
-        ? ImagePreview(filePath: _xFile!.path)
-        : const FallbackImage();
+  @override
+  void initState() {
+    super.initState();
+    imageBase64 = widget.initialValue;
   }
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () { _pickImage(); },
+      onPressed: () {
+        _pickImage();
+      },
       child: Column(
         children: [
           Stack(
             children: [
               SizedBox(
-                width: 100,
-                height: 100,
-                child: getImageWidget(),
+                width: _width,
+                height: _height,
+                child: _getImagePreviewWidget(),
               ),
               const Positioned(
                 bottom: 5,
@@ -53,60 +52,55 @@ class _ImageFormFieldState extends State<ImageFormField> {
       ),
     );
   }
-}
 
-class ImagePreview extends StatelessWidget {
-  const ImagePreview({Key? key, required this.filePath}) : super(key: key);
+  void _pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? imageFile = await picker.pickImage(source: ImageSource.gallery, maxWidth: 250, maxHeight: 250, imageQuality: 90);
+    // final XFile? photo = await picker.pickImage(source: ImageSource.camera);
 
-  final String filePath;
+    Uint8List? imageBytes = await imageFile?.readAsBytes();
+    imageBase64 = base64Encode(imageBytes!);
+    widget.onChanged(imageBase64);
+    setState(() {
+      imageBase64 = imageBase64;
+    });
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.network(
-        filePath,
-        fit: BoxFit.cover,
-        width: 100,
-        height: 100,
-      ),
+  Widget _getImagePreviewWidget() {
+    if (_hasValidBase64Image()) {
+      return ClipRRect(borderRadius: BorderRadius.circular(8), child: _loadImageFromMemory(base64Decode(imageBase64!)));
+    } else {
+      return const Icon(Icons.image_rounded, color: Colors.grey, size: 100);
+    }
+  }
+
+  bool _hasValidBase64Image() {
+    if (imageBase64 == null || imageBase64!.isEmpty) {
+      return false;
+    }
+    try {
+      base64Decode(imageBase64!);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Widget _loadImageFromNetwork(String filePath) {
+    return Image.network(
+      filePath,
+      fit: BoxFit.cover,
+      width: _width,
+      height: _height,
     );
   }
-}
 
-
-class FallbackImage extends StatelessWidget {
-  const FallbackImage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(
-        Icons.image_rounded,
-        color: Colors.grey,
-        size: 100
-    );
-  }
-}
-
-class UploadIcon extends StatelessWidget {
-  const UploadIcon({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: SizedBox(
-        width: 30,
-        height: 30,
-        child: Container(
-          color: Colors.black.withOpacity(0.7),
-          child: const Icon(
-            Icons.photo_camera_outlined,
-            color: Colors.white,
-            size: 22,
-          ),
-        ),
-      ),
+  Widget _loadImageFromMemory(Uint8List base64ImageByeList) {
+    return Image.memory(
+      base64ImageByeList,
+      fit: BoxFit.cover,
+      width: _width,
+      height: _height,
     );
   }
 }

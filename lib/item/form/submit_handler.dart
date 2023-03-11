@@ -25,6 +25,7 @@ class SubmitHandler {
       "name": formData.name,
       "description": formData.description,
       "expiryDate": formData.expiryDate,
+      "image": formData.image,
     };
   }
 }

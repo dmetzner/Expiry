@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expiry/item/edit_item_page.dart';
 import 'package:expiry/layout/page_loading_animation.dart';
@@ -82,13 +85,7 @@ class _ItemOverviewState extends State<ItemOverview> {
                         Container(
                           height: 80.0,
                           width: 80.0,
-                          decoration: BoxDecoration(
-                            border: const Border(bottom: BorderSide(color: Colors.grey, width: 1.0)),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(data["imageUrl"] ?? "https://picsum.photos/200/300"),
-                            ),
-                          ),
+                          child: _getImagePreviewWidget(data['image']),
                         ),
                         const SizedBox(width: 16.0),
                         SizedBox(
@@ -156,6 +153,44 @@ class _ItemOverviewState extends State<ItemOverview> {
           return const PageLoadingAnimation();
         }
       },
+    );
+  }
+
+  Widget _getImagePreviewWidget(String? imageBase64) {
+    if (_hasValidBase64Image(imageBase64)) {
+      return ClipRRect(borderRadius: BorderRadius.circular(8), child: _loadImageFromMemory(base64Decode(imageBase64!)));
+    } else {
+      return const Icon(Icons.image_rounded, color: Colors.grey, size: 80);
+    }
+  }
+
+  bool _hasValidBase64Image(String? imageBase64) {
+    if (imageBase64 == null || imageBase64.isEmpty) {
+      return false;
+    }
+    try {
+      base64Decode(imageBase64);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Widget _loadImageFromNetwork(String filePath) {
+    return Image.network(
+      filePath,
+      fit: BoxFit.cover,
+      width: 100,
+      height: 100,
+    );
+  }
+
+  Widget _loadImageFromMemory(Uint8List base64ImageByeList) {
+    return Image.memory(
+      base64ImageByeList,
+      fit: BoxFit.cover,
+      width: 100,
+      height: 100,
     );
   }
 
