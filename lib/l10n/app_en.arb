@@ -11,15 +11,37 @@
   "@editItemAppBarTitle": {
     "description": "The title of the app bar when editing an item"
   },
+  "itemNotFoundErrorMessage": "This item does no longer exist",
+  "@itemNotFoundErrorMessage": {
+    "description": "The text of the error message when an item is not found, e.g. when trying to edit an item that does no longer exist"
+  },
   "saveItemButton": "Save",
   "@saveItemButton": {
     "description": "The text of the save button when adding a new item"
   },
-
-
+  "generalErrorMessage": "Something went wrong",
+  "@generalErrorMessage": {
+    "description": "The text of the error message in case of an unspecified error"
+  },
+  "deleteItemDialogTitle": "Delete Item",
+  "@deleteItemDialogTitle": {
+    "description": "The title of the dialog when deleting an item"
+  },
+  "deleteItemDialogContent": "Are you sure you want to delete this item?",
+  "@deleteItemDialogContent": {
+    "description": "The text of the confirmation dialog when deleting an item"
+  },
+  "deleteItemDialogConfirmButton": "Yes, delete",
+  "@deleteItemDialogConfirmButton": {
+    "description": "The text of the confirm button when deleting an item"
+  },
+  "deleteItemDialogCancelButton": "No, cancel",
+  "@deleteItemDialogCancelButton": {
+    "description": "The text of the cancel button when deleting an item"
+  },
   "sidebarDrawer_MenuTitle_SignIn": "Sign In",
   "@sidebarDrawer_MenuTitle_SignIn": {
-      "description": "The title of the menu item to sign in"
+    "description": "The title of the menu item to sign in"
   },
   "sidebarDrawer_MenuTitle_Settings": "Settings",
   "@sidebarDrawer_MenuTitle_Settings": {
@@ -31,22 +53,16 @@
   },
   "sidebarDrawer_MenuTitle_SignOut": "Sign Out",
   "@sidebarDrawer_MenuTitle_SignOut": {
-      "description": "The text of the sign out button in the sidebar drawer to sign out of the app"
+    "description": "The text of the sign out button in the sidebar drawer to sign out of the app"
   },
-
-
-
   "signIn": "Sign In",
   "@signIn": {
     "description": "The text of the sign in button"
   },
-
-
   "signInPage_AppBar_Title": "Sign In",
   "@signInPage_AppBar_Title": {
     "description": "The title of the app bar when signing in"
   },
-
   "signInForm_EmailField_LabelText": "Email",
   "@signInForm_EmailField_LabelText": {
     "description": "The text of the email field label on the sign in form"
@@ -59,7 +75,6 @@
   "@signInForm_EmailField_ValidationError_EmailInvalid": {
     "description": "The text of the email field validation error when an invalid email is provided"
   },
-
   "signInForm_PasswordField_LabelText": "Password",
   "@signInForm_PasswordField_LabelText": {
     "description": "The text of the password field label on the sign in form"
@@ -68,9 +83,24 @@
   "@signInForm_PasswordField_ValidationError_PasswordRequired": {
     "description": "The text of the password field validation error when no password is provided"
   },
-
   "signInForm_SubmitButton": "Sign In",
   "@signInForm_SubmitButton": {
     "description": "The text of the sign in button on the sign in form"
+  },
+  "discardChangesDialogTitle": "Discard Changes?",
+  "@discardChangesDialogTitle": {
+    "description": "The title of the dialog when a user might accidentally discards changes, during actions such as leaving the page"
+  },
+  "discardChangesDialogContent": "Are you sure you want to discard your changes? This action cannot be undone.",
+  "@discardChangesDialogContent": {
+    "description": "The text of the confirmation dialog when a user might accidentally discards changes, during actions such as leaving the page"
+  },
+  "discardChangesDialogConfirmButton": "Yes, discard changes",
+  "@discardChangesDialogConfirmButton": {
+    "description": "The text of the confirm button when a user might accidentally discards changes, during actions such as leaving the page"
+  },
+  "discardChangesDialogCancelButton": "No, keep changes",
+  "@discardChangesDialogCancelButton": {
+    "description": "The text of the cancel button when a user might accidentally discards changes, during actions such as leaving the page"
   }
 }

@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 import 'overview/expiry_item_seperator.dart';
 
 class ItemOverview extends StatefulWidget {
-  ItemOverview({Key? key}) : super(key: key);
+  const ItemOverview({Key? key}) : super(key: key);
 
   @override
   State<ItemOverview> createState() => _ItemOverviewState();
@@ -71,7 +71,7 @@ class _ItemOverviewState extends State<ItemOverview> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditItemPage(id: id),
+                          builder: (context) => EditItemPage(itemId: id),
                         ),
                       ).then((value) => {
                             setState(() {
@@ -82,7 +82,7 @@ class _ItemOverviewState extends State<ItemOverview> {
                     },
                     child: Row(
                       children: <Widget>[
-                        Container(
+                        SizedBox(
                           height: 80.0,
                           width: 80.0,
                           child: _getImagePreviewWidget(data['image']),

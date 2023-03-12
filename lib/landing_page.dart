@@ -15,13 +15,13 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const SearchAwareAppBar(),
-      drawer: const SidebarDrawer(),
+    return const Scaffold(
+      appBar: SearchAwareAppBar(),
+      drawer: SidebarDrawer(),
       body: Center(
         child: ItemOverview(),
       ),
-      floatingActionButton: const AddItemActionButton(),
+      floatingActionButton: AddItemActionButton(),
     );
   }
 }

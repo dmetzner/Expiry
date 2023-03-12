@@ -9,22 +9,16 @@ class SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: ElevatedButton(
-              onPressed: () async {
-                if (formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  onSubmit();
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Text(AppLocalizations.of(context)!.saveItemButton),
-              )),
-        )
-      ],
-    );
+    return ElevatedButton(
+        onPressed: () async {
+          if (formKey.currentState!.validate()) {
+            formKey.currentState!.save();
+            onSubmit();
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Text(AppLocalizations.of(context)!.saveItemButton),
+        ));
   }
 }
